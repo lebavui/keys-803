@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as s,a as o}from"./index-e8c0973e.js";const a={data(){return{newKey:{type:0,user:""}}},created(){}},_={class:"about"},n=o("h1",null,"This is an about page",-1),c=[n];function r(i,u,d,p,l,f){return t(),s("div",_,c)}const b=e(a,[["render",r]]);export{b as default};
