@@ -27,7 +27,7 @@ const db = getFirestore(app);
 export default {
   data() {
     return {
-      keyId: 0,
+      keyId: "",
       fullname: "",
       note: "",
       userList: null,
@@ -48,7 +48,7 @@ export default {
         console.log("Document written with ID: ", docRef.id);
         this.loadRecords();
         // Clear form
-        this.keyId = 0;
+        this.keyId = "";
         this.fullname = "";
         this.note = "";
       } catch (e) {
@@ -66,11 +66,15 @@ export default {
       await deleteDoc(doc(db, "users", docId));
       this.loadRecords();
     },
+    showDate(timestamp) {
+      return new Date(timestamp).toLocaleDateString("en-US");
+    }
   },
 };
 </script>
 
 <template>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <div class="container">
     <header>
       <p>Nhập dữ liệu mới:</p>
@@ -114,9 +118,9 @@ export default {
         <tr v-for="user in userList" :key="user[0]">
           <td>{{ user[1].key_id }}</td>
           <td>{{ user[1].fullname }}</td>
-          <td>{{ user[1].created_time }}</td>
+          <td>{{ showDate(user[1].created_time) }}</td>
           <td>{{ user[1].note }}</td>
-          <td><button @click="deleteRecord(user[0])">Delete</button></td>
+          <td><button @click="deleteRecord(user[0])"><i class="fa fa-trash" /></button></td>
         </tr>
       </tbody>
     </table>
