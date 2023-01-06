@@ -59,8 +59,8 @@ export default {
       const usersCol = collection(db, "users");
       const usersSnapshot = await getDocs(usersCol);
       this.userList = usersSnapshot.docs.map((doc) => [doc.id, doc.data()]);
-      console.log(usersSnapshot.docs);
-      console.log(this.userList);
+      // console.log(usersSnapshot.docs);
+      // console.log(this.userList);
     },
     async deleteRecord(docId) {
       await deleteDoc(doc(db, "users", docId));
