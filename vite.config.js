@@ -8,7 +8,7 @@ export default defineConfig({
   base:'/keys-803/',
   plugins: [vue()],
   build: {
-    outDir : '../dist',
+    outDir : './dist',
   },
   resolve: {
     alias: {
